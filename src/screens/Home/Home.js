@@ -1,6 +1,5 @@
 import React from 'react';
 import {GHOST_WHITE, Half_WHITE, THEME_COLOR, WHITE_BG} from '../../strings/Colors';
-import CustomHeader from '../../components/CustomHeader';
 import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LottieView from 'lottie-react-native';
@@ -39,7 +38,7 @@ const Home = () => {
         name="Dashboard"
         options={({navigation}) => ({
           headerShown: true,
-          headerTitle: 'S.M.S Dashboard',
+          headerTitle: 'NEWS.REPORT',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: 'bold',
@@ -47,24 +46,11 @@ const Home = () => {
             color: WHITE_BG,
           },
           headerStyle: {backgroundColor: theme.background},
-          headerLeft: () => <CustomHeader navigation={navigation} />,
-          headerRight: () => (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={handlPressNotifications}>
-              <LottieView
-                style={{width: 72, height: 72}}
-                source={require('../../animations/3Raoy0aoi8.json')}
-                autoPlay
-                loop
-              />
-            </TouchableOpacity>
-          ),
           tabBarIcon: () => (
             <View>
               <Image
                 style={{width: 19, height: 19, tintColor: Half_WHITE}}
-                source={require('../../images/icons/dash.png')}
+                source={require('../../images/dash.png')}
               />
             </View>
           ),
