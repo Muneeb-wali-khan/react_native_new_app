@@ -60,7 +60,7 @@ const Splash = () => {
       <View style={styles.container}>
         <Animated.Image
           style={[styles.logo, {transform: [{translateY: jumpAnim}]}]}
-          source={require('../../images/splash.jpeg')}
+          source={require('../../images/logo.png')}
         />
       </View>
     </>

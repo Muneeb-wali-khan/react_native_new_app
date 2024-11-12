@@ -37,8 +37,8 @@ const Home = () => {
       <Bottom.Screen
         name="Dashboard"
         options={({navigation}) => ({
-          headerShown: true,
-          headerTitle: 'NEWS.REPORT',
+          headerShown: false,
+          headerTitle: 'NWW.NEWS',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: 'bold',
