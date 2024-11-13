@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     backgroundColor: SPLASH_COLOR,
   },
   logo: {
-    width: responsiveScreenWidth(50),
-    height: '50%',
+    width: responsiveScreenWidth(60),
+    height: '60%',
     resizeMode: 'contain',
   },
   welcome: {

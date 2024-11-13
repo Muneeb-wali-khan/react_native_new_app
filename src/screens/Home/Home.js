@@ -6,6 +6,8 @@ import LottieView from 'lottie-react-native';
 import {Image, View, Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+
 import Main from '../Main';
 
 const Bottom = createBottomTabNavigator();
@@ -79,8 +81,8 @@ const Home = () => {
             ) : null,
         }}
         component={StudentDrawerAdmin}
-      />
-      <Bottom.Screen
+      /> */}
+      {/* <Bottom.Screen
         name="Attendances"
         options={{
           headerShown: false,
@@ -98,8 +100,8 @@ const Home = () => {
             ) : null,
         }}
         component={AttendanceDrawerAdn}
-      />
-      <Bottom.Screen
+      /> */}
+      {/* <Bottom.Screen
         name="Teachers"
         options={{
           headerShown: false,
@@ -117,8 +119,8 @@ const Home = () => {
             ) : null,
         }}
         component={TeacherDrawerAdmin}
-      />
-      <Bottom.Screen
+      /> */}
+      {/* <Bottom.Screen
         name="Profile"
         component={PorfileDrawer}
         options={{
