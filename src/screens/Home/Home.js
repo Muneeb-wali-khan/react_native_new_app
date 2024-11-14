@@ -1,144 +1,125 @@
 import React from 'react';
-import {GHOST_WHITE, Half_WHITE, THEME_COLOR, WHITE_BG} from '../../strings/Colors';
-import {useSelector} from 'react-redux';
+import {
+  BLACK,
+  DIM_WHITE,
+  GHOST_WHITE,
+  Half_GRAY,
+  Half_WHITE, // Ensure this is correctly defined as a lighter gray color
+  THEME_COLOR,
+  WHITE_BG,
+} from '../../strings/Colors';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import LottieView from 'lottie-react-native';
-import {Image, View, Text} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+import {Image, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 import Main from '../Main';
+import Search from '../Search';
+import Favorites from '../Favorites';
+import Account from '../Account';
 
 const Bottom = createBottomTabNavigator();
 
 const Home = () => {
-  const theme ={
-    background: THEME_COLOR
-  }
-  const navigation = useNavigation()
-
-  const handlPressNotifications = () => {
-    navigation.navigate('AdminStack', {screen: 'allNotifications'})
-  };
+  const navigation = useNavigation();
 
   return (
     <Bottom.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: theme.background,
+          backgroundColor: WHITE_BG,
           borderWidth: 0,
-          height: 60,
+          height: 55,
           paddingHorizontal: 4,
         },
-        tabBarActiveTintColor: Half_WHITE,
-        tabBarInactiveTintColor: GHOST_WHITE,
+        tabBarActiveTintColor: BLACK, // Active icon color
+        tabBarInactiveTintColor: Half_GRAY, // Inactive icon color (light gray)
         tabBarLabelStyle: {fontWeight: 'bold'},
         tabBarItemStyle: {paddingVertical: 6},
       }}>
       <Bottom.Screen
         name="Dashboard"
-        options={({navigation}) => ({
-          headerShown: false,
-          headerTitle: 'NWW.NEWS',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            fontSize: 20,
-            color: WHITE_BG,
+        options={{
+          headerShown: true,
+          headerStyle: {
+            height: 100,
+            backgroundColor: Half_WHITE,
+            elevation:0.9
           },
-          headerStyle: {backgroundColor: theme.background},
-          tabBarIcon: () => (
+          headerTitleAlign: 'center',
+          headerTitle: () => {
+            return (
+              <View>
+                <Image
+                  style={{width: 180, height: 180}} // Adjust as necessary
+                  resizeMode="contain"
+                  source={require('../../images/nwwnewlogo.png')}
+                />
+              </View>
+            );
+          },
+          tabBarIcon: (
+            {color}, // Use the color prop here
+          ) => (
             <View>
-              <Image
-                style={{width: 19, height: 19, tintColor: Half_WHITE}}
-                source={require('../../images/dash.png')}
-              />
+              <Entypo name="home" size={22} color={color} />
             </View>
           ),
-          tabBarLabel: ({focused}) =>
-            focused ? (
-              <Text style={{color: Half_WHITE, fontSize: 10}}>Dashboard</Text>
-            ) : null,
-        })}
+          tabBarLabel: '',
+        }}
         component={Main}
       />
-      {/* <Bottom.Screen
-        name="Students"
+
+      <Bottom.Screen
+        name="Search"
         options={{
-          headerShown: false,
-          tabBarIcon: () => (
+          headerShown: true,
+          tabBarIcon: (
+            {color}, // Use the color prop here
+          ) => (
             <View>
-              <Image
-                style={{width: 22, height: 22, tintColor: Half_WHITE}}
-                source={require('../../images/icons/students.png')}
-              />
+              <FontAwesome name="search" size={22} color={color} />
             </View>
           ),
-          tabBarLabel: ({focused}) =>
-            focused ? (
-              <Text style={{color: Half_WHITE, fontSize: 10}}>Students</Text>
-            ) : null,
+          tabBarLabel: '',
         }}
-        component={StudentDrawerAdmin}
-      /> */}
-      {/* <Bottom.Screen
-        name="Attendances"
+        component={Search}
+      />
+
+      <Bottom.Screen
+        name="Favorite"
         options={{
-          headerShown: false,
-          tabBarIcon: () => (
+          headerShown: true,
+          tabBarIcon: (
+            {color}, // Use the color prop here
+          ) => (
             <View>
-              <Image
-                style={{width: 22, height: 22, tintColor: Half_WHITE}}
-                source={require('../../images/icons/attendance.png')}
-              />
+              <Fontisto name="favorite" size={22} color={color} />
             </View>
           ),
-          tabBarLabel: ({focused}) =>
-            focused ? (
-              <Text style={{color: Half_WHITE, fontSize: 10}}>Attendances</Text>
-            ) : null,
+          tabBarLabel: '',
         }}
-        component={AttendanceDrawerAdn}
-      /> */}
-      {/* <Bottom.Screen
-        name="Teachers"
+        component={Favorites}
+      />
+
+      <Bottom.Screen
+        name="Account"
         options={{
-          headerShown: false,
-          tabBarIcon: () => (
+          headerShown: true,
+          tabBarIcon: (
+            {color}, // Use the color prop here
+          ) => (
             <View>
-              <Image
-                style={{width: 22, height: 22, tintColor: Half_WHITE}}
-                source={require('../../images/icons/teacher.png')}
-              />
+              <FontAwesome6 name="user-large" size={22} color={color} />
             </View>
           ),
-          tabBarLabel: ({focused}) =>
-            focused ? (
-              <Text style={{color: Half_WHITE, fontSize: 10}}>Teachers</Text>
-            ) : null,
+          tabBarLabel: '',
         }}
-        component={TeacherDrawerAdmin}
-      /> */}
-      {/* <Bottom.Screen
-        name="Profile"
-        component={PorfileDrawer}
-        options={{
-          headerShown: false,
-          tabBarIcon: () => (
-            <View>
-              <Image
-                style={{width: 22, height: 22, tintColor: Half_WHITE}}
-                source={require('../../images/icons/user.png')}
-              />
-            </View>
-          ),
-          tabBarLabel: ({focused}) =>
-            focused ? (
-              <Text style={{color: Half_WHITE, fontSize: 10}}>Profile</Text>
-            ) : null,
-        }}
-      /> */}
+        component={Account}
+      />
     </Bottom.Navigator>
   );
 };
