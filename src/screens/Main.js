@@ -48,7 +48,7 @@ const Main = () => {
   const _renderTabBar = (props) => {
     return (
       <ScrollView
-        contentContainerStyle={{ height: 100 }}
+        contentContainerStyle={{ height: 60,padding:4 }}
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.tabBar}
@@ -68,6 +68,7 @@ const Main = () => {
                   color: isActive ? THEME_COLOR : BLACK,
                   fontWeight: isActive ? '800' : '700',
                   borderBottomWidth: isActive ? 2 : 0,
+                  fontSize:14.5,
                   borderBottomColor: isActive ? THEME_COLOR : 'transparent',
                 }}
               >
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
   tabItem: {
     alignItems: 'center',
     padding: 16,
+    paddingVertical:10,
   },
   lazyPlaceholder: {
     flex: 1,
