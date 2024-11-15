@@ -1,102 +1,111 @@
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   Animated,
   View,
   TouchableOpacity,
   StyleSheet,
-  StatusBar,
   ScrollView,
 } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
-import { Half_WHITE, THEME_COLOR, WHITE_BG, BLACK } from '../strings/Colors';
-
-const FirstRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#ff4081' }]} />
-);
-const SecondRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#673ab7' }]} />
-);
-const ThirdRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#0000' }]} />
-);
-const FourthRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#6737' }]} />
-);
-const FifthRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#6737' }]} />
-);
-const SixthRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#000' }]} />
-);
+import {TabView, SceneMap} from 'react-native-tab-view';
+import {Text} from 'react-native-paper';
+import {
+  Half_WHITE,
+  THEME_COLOR,
+  WHITE_BG,
+  BLACK,
+  Half_GRAY,
+  DIM_BLACK,
+} from '../strings/Colors';
+import LatestScreen from './TopTabs/LatestScreen';
+import RecentScreen from './TopTabs/RecentScreen';
+import TechCrunch from './TopTabs/TechCrunch';
+import BussinessUSA from './TopTabs/BussinessUSA';
+import ArticlesJournal from './TopTabs/ArticlesJournal';
 
 const Main = () => {
   const [index, setIndex] = useState(0);
+  const someValue = 'Test Props';
+  const otherValue = 'Other Props';
 
   const routes = [
-    { key: 'first', title: 'First' },
-    { key: 'second', title: 'Second' },
-    { key: 'third', title: 'Third' },
-    { key: 'fourth', title: 'Fourth' },
-    { key: 'fifth', title: 'Fifth' },
-    { key: 'sixth', title: 'Sixth' },
+    {key: 'today', title: 'Today News'},
+    {key: 'latest', title: 'Latest Today'},
+    {key: 'tech', title: 'Tech World'},
+    {key: 'bussiness', title: 'Bussiness USA'},
+    {key: 'articles', title: 'Articles Top'},
   ];
-
-  const _handleIndexChange = useCallback((index) => {
+  const _handleIndexChange = useCallback(index => {
     setIndex(index);
   }, []);
 
-  const _renderTabBar = (props) => {
+  const _renderTabBar = props => {
     return (
-      <ScrollView
-        contentContainerStyle={{ height: 60,padding:4 }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.tabBar}
-      >
-        {props.navigationState.routes.map((route, i) => {
-          // Check if the current route is active
-          const isActive = index === i;
+      <View>
+        <ScrollView
+          contentContainerStyle={{
+            paddingVertical: 8, // Adjusted for better height
+            backgroundColor: Half_WHITE,
+            borderWidth: 1,
+            borderColor: Half_GRAY,
+          }}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.tabBar}>
+          {props.navigationState.routes.map((route, i) => {
+            const isActive = index === i;
 
-          return (
-            <TouchableOpacity
-              key={route.key}
-              style={styles.tabItem}
-              onPress={() => setIndex(i)}
-            >
-              <Animated.Text
-                style={{
-                  color: isActive ? THEME_COLOR : BLACK,
-                  fontWeight: isActive ? '800' : '700',
-                  borderBottomWidth: isActive ? 2 : 0,
-                  fontSize:14.5,
-                  borderBottomColor: isActive ? THEME_COLOR : 'transparent',
-                }}
-              >
-                {route.title}
-              </Animated.Text>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
+            return (
+              <TouchableOpacity
+                key={route.key}
+                style={styles.tabItem}
+                onPress={() => setIndex(i)}>
+                <Text
+                  style={{
+                    color: isActive ? THEME_COLOR : DIM_BLACK,
+                    fontWeight: isActive ? '800' : '700',
+                    borderBottomWidth: isActive ? 2 : 0,
+                    fontSize: 14.5,
+                    borderBottomColor: isActive ? THEME_COLOR : 'transparent',
+                  }}>
+                  {route.title}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
+      </View>
     );
   };
 
-  const _renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-    third: ThirdRoute,
-    fourth: FourthRoute,
-    fifth: FifthRoute,
-    sixth: SixthRoute,
-  });
+  const renderScene = ({route}) => {
+    switch (route.key) {
+      case 'today':
+        return <LatestScreen someProps={someValue} />;
+      case 'latest':
+        return <RecentScreen otherProps={otherValue} />;
+      case 'tech':
+        return <TechCrunch />;
+      case 'bussiness':
+        return <BussinessUSA />;
+      case 'articles':
+        return <ArticlesJournal />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <TabView
-      navigationState={{ index, routes }}
-      renderScene={_renderScene}
+      navigationState={{index, routes}}
+      renderScene={renderScene}
       renderTabBar={_renderTabBar}
       lazy={true}
-      renderLazyPlaceholder={() => <View style={styles.lazyPlaceholder} />}
+      style={{flex: 1}}
+      renderLazyPlaceholder={() => (
+        <View style={styles.lazyPlaceholder}>
+          <Text>Loading...</Text>
+        </View>
+      )}
       onIndexChange={_handleIndexChange}
     />
   );
@@ -105,19 +114,24 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   tabBar: {
-    flexDirection: 'row',
     backgroundColor: Half_WHITE,
+    elevation: 4,
   },
   tabItem: {
     alignItems: 'center',
-    padding: 16,
-    paddingVertical:10,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
   },
   lazyPlaceholder: {
     flex: 1,
     backgroundColor: WHITE_BG,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
