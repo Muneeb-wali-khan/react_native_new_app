@@ -64,7 +64,7 @@ const Main = () => {
                     color: isActive ? THEME_COLOR : DIM_BLACK,
                     fontWeight: isActive ? '800' : '700',
                     borderBottomWidth: isActive ? 2 : 0,
-                    fontSize: 14.5,
+                    fontSize: 14,
                     borderBottomColor: isActive ? THEME_COLOR : 'transparent',
                   }}>
                   {route.title}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   tabItem: {
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 7,
     paddingHorizontal: 10,
     marginHorizontal: 5,
   },
