@@ -100,6 +100,7 @@ const LatestScreen = () => {
   const handlePress = item => {
     navigation.navigate('NewsDetails', {item});
   };
+
   const handlFavorite = (item)=>{
     ToastAndroid.showWithGravity(
       'Added to favorite successfully !',
@@ -108,6 +109,8 @@ const LatestScreen = () => {
     );
     
   }
+
+  
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {/* headline */}
@@ -184,7 +187,7 @@ const LatestScreen = () => {
                 shadowOffset: {width: 0, height: 2},
                 shadowOpacity: 0.5,
                 shadowRadius: 2,
-                elevation: 1,
+                elevation: 2,
               }}>
               {/* image */}
               <View>

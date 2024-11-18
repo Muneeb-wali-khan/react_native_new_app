@@ -4,8 +4,16 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import HeaderCustom from '../components/HeaderCustom';
-import {Half_GRAY, MEDIUM_BLACK} from '../strings/Colors';
+import {
+  DIM_BLACK,
+  Half_GRAY,
+  Half_WHITE,
+  MEDIUM_BLACK,
+  Medium_GRAY,
+} from '../strings/Colors';
+import {TextInput} from 'react-native';
 
 const NewsDetails = () => {
   const navigation = useNavigation();
@@ -72,6 +80,35 @@ const NewsDetails = () => {
           </View>
         </View>
       </ScrollView>
+      <View
+        style={{
+          flexDirection: 'row',
+          gap: 20,
+          backgroundColor: Half_WHITE,
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingVertical: 14,
+          paddingHorizontal: 17,
+        }}>
+        <TextInput
+          style={{
+            flex: 1,
+            backgroundColor: Medium_GRAY,
+            borderWidth: 0.2,
+            borderRadius: 5,
+            borderColor: Half_GRAY,
+          }}
+        />
+        <View style={{flexDirection: 'row', gap: 15}}>
+          <TouchableOpacity>
+            <MaterialIcons name="add-circle" size={25} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Feather name="thumbs-up" size={20} />
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };

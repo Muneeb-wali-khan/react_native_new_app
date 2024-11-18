@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BLACK,
   DIM_WHITE,
@@ -26,6 +26,11 @@ const Bottom = createBottomTabNavigator();
 const Home = () => {
   const navigation = useNavigation();
 
+  const headerOptions = {
+    headerTitleAlign: 'center',
+    headerTitleStyle: {fontWeight: '700', fontSize: 19},
+  };
+
   return (
     <Bottom.Navigator
       screenOptions={{
@@ -47,7 +52,7 @@ const Home = () => {
           headerStyle: {
             height: 100,
             backgroundColor: Half_WHITE,
-            elevation:0.9
+            elevation: 0.9,
           },
           headerTitleAlign: 'center',
           headerTitle: () => {
@@ -76,6 +81,8 @@ const Home = () => {
       <Bottom.Screen
         name="Search"
         options={{
+          ...headerOptions,
+          headerTitle: 'SEARCH',
           headerShown: true,
           tabBarIcon: (
             {color}, // Use the color prop here
@@ -92,6 +99,8 @@ const Home = () => {
       <Bottom.Screen
         name="Favorite"
         options={{
+          ...headerOptions,
+          headerTitle: 'SAVED NEWS',
           headerShown: true,
           tabBarIcon: (
             {color}, // Use the color prop here
@@ -108,6 +117,8 @@ const Home = () => {
       <Bottom.Screen
         name="Account"
         options={{
+          ...headerOptions,
+          headerTitle: 'ACCOUNT & SETTINGS',
           headerShown: true,
           tabBarIcon: (
             {color}, // Use the color prop here
