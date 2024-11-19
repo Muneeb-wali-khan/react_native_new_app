@@ -5,6 +5,7 @@ import {
   TextInput,
   ScrollView,
   Image,
+  FlatList,
 } from 'react-native';
 import React from 'react';
 import {
@@ -92,8 +93,8 @@ const Search = () => {
   ];
 
   return (
-    <View style={{padding: 15, flex: 1, backgroundColor: Half_WHITE}}>
-      <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={{padding: 17, flex: 1, backgroundColor: Half_WHITE}}>
         {/* top */}
         <View style={{flexDirection: 'column', gap: 8, marginTop: 10}}>
           <Text style={{fontWeight: '600', fontSize: 22}}>Hello!</Text>
@@ -122,6 +123,7 @@ const Search = () => {
             shadowRadius: 2,
             elevation: 4,
             gap: 20,
+            marginVertical: 10,
             paddingHorizontal: 10,
             borderRadius: 10,
             alignItems: 'center',
@@ -152,17 +154,24 @@ const Search = () => {
             </TouchableOpacity>
           </View>
 
-          {data?.map(item => (
-            <>
-              {/* // news cards */}
+          <FlatList
+            data={data}
+            showsVerticalScrollIndicator={false}
+            scrollEnabled={false}
+            nestedScrollEnabled={true}
+            keyExtractor={(item, index) => index?.toString()}
+            numColumns={2}
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() => handlePress(item)}
                 activeOpacity={0.8}
                 style={{
                   backgroundColor: WHITE_BG,
                   borderRadius: 10,
-                  margin: 10,
-                  width:180,
+                  margin: 5,
+                  width: 150,
+                  maxWidth: 400,
                   shadowColor: '#000',
                   shadowOffset: {width: 0, height: 2},
                   shadowOpacity: 0.5,
@@ -174,14 +183,14 @@ const Search = () => {
                   <Image
                     source={{uri: item?.urlToImage}}
                     resizeMode="cover"
-                    style={{width: 180, height: 105, borderRadius: 10}}
+                    style={{height: 105, borderRadius: 10}}
                   />
                 </View>
                 {/* text */}
                 <View
                   style={{
                     shadowOffset: {width: 0, height: 2},
-                    width: 180,
+                    // width: 180,
                     padding: 4,
                   }}>
                   <View
@@ -191,13 +200,15 @@ const Search = () => {
                       gap: 6,
                       paddingVertical: 7,
                     }}>
-                    <Text numberOfLines={3} style={{fontWeight: '800'}}>
+                    <Text
+                      numberOfLines={3}
+                      style={{fontWeight: '800', fontSize: 13}}>
                       {item?.title}
                     </Text>
-                    <Text numberOfLines={1} style={{fontWeight: '400'}}>
-                      {item?.description?.length > 10
-                        ? item?.description.slice(1, 23) + '...'
-                        : item?.description}
+                    <Text
+                      numberOfLines={1}
+                      style={{fontWeight: '400', fontSize: 12}}>
+                      {item?.description}
                     </Text>
                     <View
                       style={{
@@ -210,12 +221,11 @@ const Search = () => {
                         style={{
                           fontWeight: '300',
                           color: Half_GRAY,
-                          fontSize: 13,
+                          fontSize: 12,
                         }}>
                         {new Date(item?.publishedAt).toDateString()}
                       </Text>
-                      <TouchableOpacity
-                        onPress={() => handlFavorite(item)}>
+                      <TouchableOpacity onPress={() => handlFavorite(item)}>
                         <Fontisto
                           name="bookmark"
                           size={18}
@@ -226,11 +236,11 @@ const Search = () => {
                   </View>
                 </View>
               </TouchableOpacity>
-            </>
-          ))}
+            )}
+          />
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
