@@ -18,10 +18,10 @@ import {
   WHITE_BG,
 } from '../../strings/Colors';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const LatestScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const bgcover =
     'https://media.istockphoto.com/id/1767183261/photo/firefighter-concept-fireman-using-water-and-extinguisher-to-fighting-with-fire-flame.webp?a=1&b=1&s=612x612&w=0&k=20&c=1mEuoRWgLfnA4maF2haOxHYsQxgvjSZrzWxLenNx-Ks=';
 
@@ -101,16 +101,14 @@ const LatestScreen = () => {
     navigation.navigate('NewsDetails', {item});
   };
 
-  const handlFavorite = (item)=>{
+  const handlFavorite = item => {
     ToastAndroid.showWithGravity(
       'Added to favorite successfully !',
       ToastAndroid.SHORT,
       ToastAndroid.CENTER,
     );
-    
-  }
+  };
 
-  
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {/* headline */}
@@ -164,81 +162,96 @@ const LatestScreen = () => {
         </View>
       </ImageBackground>
 
-      <FlatList
-        style={{
-          backgroundColor: Half_WHITE,
-          flex: 1,
-          padding: 5,
-        }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={data}
-        renderItem={item => {
-          return (
-            // {/* news cards */}
-            <TouchableOpacity
-              onPress={() => handlePress(item?.item)}
-              activeOpacity={0.8}
-              style={{
-                backgroundColor: WHITE_BG,
-                borderRadius: 10,
-                margin: 10,
-                shadowColor: '#000',
-                shadowOffset: {width: 0, height: 2},
-                shadowOpacity: 0.5,
-                shadowRadius: 2,
-                elevation: 2,
-              }}>
-              {/* image */}
-              <View>
-                <Image
-                  source={{uri: item.item?.urlToImage}}
-                  resizeMode="cover"
-                  style={{width: 180, height: 105, borderRadius: 10}}
-                />
-              </View>
-              {/* text */}
-              <View
+      <View style={{paddingRight:10}}>
+        <FlatList
+          style={{
+            backgroundColor: Half_WHITE,
+            padding: 10,
+          }}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={data}
+          renderItem={item => {
+            const items = item?.item;
+            return (
+              // {/* news cards */}
+              <TouchableOpacity
+                onPress={() => handlePress(items)}
+                activeOpacity={0.8}
                 style={{
+                  backgroundColor: WHITE_BG,
+                  borderRadius: 10,
+                  margin: 8,
+                  width: 150,
+                  maxWidth: 400,
+                  shadowColor: '#000',
                   shadowOffset: {width: 0, height: 2},
-                  width: 180,
-                  padding: 4,
+                  shadowOpacity: 0.5,
+                  shadowRadius: 2,
+                  elevation: 2,
                 }}>
+                {/* image */}
+                <View>
+                  <Image
+                    source={{uri: items?.urlToImage}}
+                    resizeMode="cover"
+                    style={{height: 105, borderRadius: 10}}
+                  />
+                </View>
+
+                {/* text */}
                 <View
                   style={{
-                    paddingHorizontal: 8,
-                    flexDirection: 'column',
-                    gap: 6,
-                    paddingVertical: 7,
+                    shadowOffset: {width: 0, height: 2},
+                    padding: 4,
                   }}>
-                  <Text numberOfLines={3} style={{fontWeight: '800'}}>
-                    {item?.item?.title}
-                  </Text>
-                  <Text numberOfLines={1} style={{fontWeight: '400'}}>
-                    {item?.item?.description?.length > 10
-                      ? item?.item?.description.slice(1, 23) + '...'
-                      : item?.item?.description}
-                  </Text>
                   <View
                     style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      marginTop: 4,
-                      justifyContent: 'space-between',
+                      paddingHorizontal: 8,
+                      flexDirection: 'column',
+                      gap: 6,
+                      paddingVertical: 7,
                     }}>
-                    <Text style={{fontWeight: '300',color:Half_GRAY, fontSize: 13}}>
-                      {new Date(item?.item?.publishedAt).toDateString()}
+                    <Text
+                      numberOfLines={3}
+                      style={{fontWeight: '800', fontSize: 13}}>
+                      {items?.title}
                     </Text>
-                    <TouchableOpacity onPress={()=> handlFavorite(item?.item)}>
-                      <Fontisto name="bookmark" size={18} color={THEME_COLOR} />
-                    </TouchableOpacity>
+                    <Text
+                      numberOfLines={1}
+                      style={{fontWeight: '400', fontSize: 12}}>
+                      {items?.description}
+                    </Text>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        marginTop: 4,
+                        justifyContent: 'space-between',
+                      }}>
+                      <Text
+                        style={{
+                          fontWeight: '300',
+                          color: Half_GRAY,
+                          fontSize: 12,
+                        }}>
+                        {new Date(items?.publishedAt).toDateString()}
+                      </Text>
+                      <TouchableOpacity onPress={() => handlFavorite(items)}>
+                        <Fontisto
+                          name="bookmark"
+                          size={18}
+                          color={THEME_COLOR}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          );
-        }}
-      />
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
     </ScrollView>
   );
 };

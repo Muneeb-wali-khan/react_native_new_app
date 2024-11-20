@@ -7,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import HeaderCustom from '../components/HeaderCustom';
 import {
+  BLACK,
   DIM_BLACK,
   Half_GRAY,
   Half_WHITE,
@@ -21,7 +22,7 @@ const NewsDetails = () => {
   const data = item.params?.item;
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,backgroundColor:Half_WHITE}}>
       {/* header */}
       <HeaderCustom />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -85,6 +86,11 @@ const NewsDetails = () => {
           flexDirection: 'row',
           gap: 20,
           backgroundColor: Half_WHITE,
+          elevation:1,
+          shadowColor:BLACK,
+          shadowOffset: {width: 0, height: 2},
+          shadowOpacity: 0.5,
+          shadowRadius: 2,
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
@@ -99,6 +105,7 @@ const NewsDetails = () => {
             borderRadius: 5,
             borderColor: Half_GRAY,
           }}
+          multiline={true}
         />
         <View style={{flexDirection: 'row', gap: 15}}>
           <TouchableOpacity>
