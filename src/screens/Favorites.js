@@ -81,14 +81,403 @@ const data = [
 
 const Favorites = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
       <TouchableOpacity
         activeOpacity={0.9}
         style={{
           flexDirection: 'column',
-          backgroundColor: Half_WHITE,
+          // backgroundColor: Half_WHITE,
           gap: 15,
-          marginBottom: 20,
+          paddingLeft: 10,
+          paddingTop: 15,
+        }}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            borderRadius: 8,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+            shadowColor: '#000',
+            backgroundColor: WHITE_BG,
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2,
+          }}>
+          <Image
+            style={{width: 130, height: 90, borderRadius: 7}}
+            source={{uri: imgUri}}
+            resizeMode="cover"
+          />
+          <View
+            style={{
+              flexDirection: 'column',
+              gap: 7,
+              width: 180,
+              maxWidth: 400,
+              padding: 5,
+            }}>
+            <View>
+              <Text numberOfLines={2} style={{fontWeight: '800', fontSize: 13}}>
+                Tesla self-driving Robotaxi shown in UK ahead of 2027 launch
+              </Text>
+            </View>
+            <View style={{width: 40}}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  paddingVertical: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: THEME_COLOR,
+                  color: Half_WHITE,
+                }}>
+                News
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                <Fontisto name="history" color={THEME_COLOR} size={11} />
+                <Text style={{fontSize: 11}}>{new Date().toDateString()}</Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', gap: 14, alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Feather name="trash" size={14} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <AntDesign name="sharealt" size={14} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={{
+          flexDirection: 'column',
+          // backgroundColor: Half_WHITE,
+          gap: 15,
+          paddingLeft: 10,
+          paddingTop: 15,
+        }}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            borderRadius: 8,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+            shadowColor: '#000',
+            backgroundColor: WHITE_BG,
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2,
+          }}>
+          <Image
+            style={{width: 130, height: 90, borderRadius: 7}}
+            source={{uri: imgUri}}
+            resizeMode="cover"
+          />
+          <View
+            style={{
+              flexDirection: 'column',
+              gap: 7,
+              width: 180,
+              maxWidth: 400,
+              padding: 5,
+            }}>
+            <View>
+              <Text numberOfLines={2} style={{fontWeight: '800', fontSize: 13}}>
+                Tesla self-driving Robotaxi shown in UK ahead of 2027 launch
+              </Text>
+            </View>
+            <View style={{width: 40}}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  paddingVertical: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: THEME_COLOR,
+                  color: Half_WHITE,
+                }}>
+                News
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                <Fontisto name="history" color={THEME_COLOR} size={11} />
+                <Text style={{fontSize: 11}}>{new Date().toDateString()}</Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', gap: 14, alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Feather name="trash" size={14} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <AntDesign name="sharealt" size={14} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={{
+          flexDirection: 'column',
+          // backgroundColor: Half_WHITE,
+          gap: 15,
+          paddingLeft: 10,
+          paddingTop: 15,
+        }}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            borderRadius: 8,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+            shadowColor: '#000',
+            backgroundColor: WHITE_BG,
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2,
+          }}>
+          <Image
+            style={{width: 130, height: 90, borderRadius: 7}}
+            source={{uri: imgUri}}
+            resizeMode="cover"
+          />
+          <View
+            style={{
+              flexDirection: 'column',
+              gap: 7,
+              width: 180,
+              maxWidth: 400,
+              padding: 5,
+            }}>
+            <View>
+              <Text numberOfLines={2} style={{fontWeight: '800', fontSize: 13}}>
+                Tesla self-driving Robotaxi shown in UK ahead of 2027 launch
+              </Text>
+            </View>
+            <View style={{width: 40}}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  paddingVertical: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: THEME_COLOR,
+                  color: Half_WHITE,
+                }}>
+                News
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                <Fontisto name="history" color={THEME_COLOR} size={11} />
+                <Text style={{fontSize: 11}}>{new Date().toDateString()}</Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', gap: 14, alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Feather name="trash" size={14} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <AntDesign name="sharealt" size={14} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={{
+          flexDirection: 'column',
+          // backgroundColor: Half_WHITE,
+          gap: 15,
+          paddingLeft: 10,
+          paddingTop: 15,
+        }}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            borderRadius: 8,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+            shadowColor: '#000',
+            backgroundColor: WHITE_BG,
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2,
+          }}>
+          <Image
+            style={{width: 130, height: 90, borderRadius: 7}}
+            source={{uri: imgUri}}
+            resizeMode="cover"
+          />
+          <View
+            style={{
+              flexDirection: 'column',
+              gap: 7,
+              width: 180,
+              maxWidth: 400,
+              padding: 5,
+            }}>
+            <View>
+              <Text numberOfLines={2} style={{fontWeight: '800', fontSize: 13}}>
+                Tesla self-driving Robotaxi shown in UK ahead of 2027 launch
+              </Text>
+            </View>
+            <View style={{width: 40}}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  paddingVertical: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: THEME_COLOR,
+                  color: Half_WHITE,
+                }}>
+                News
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                <Fontisto name="history" color={THEME_COLOR} size={11} />
+                <Text style={{fontSize: 11}}>{new Date().toDateString()}</Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', gap: 14, alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Feather name="trash" size={14} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <AntDesign name="sharealt" size={14} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={{
+          flexDirection: 'column',
+          // backgroundColor: Half_WHITE,
+          gap: 15,
+          paddingLeft: 10,
+          paddingTop: 15,
+        }}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            borderRadius: 8,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+            shadowColor: '#000',
+            backgroundColor: WHITE_BG,
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2,
+          }}>
+          <Image
+            style={{width: 130, height: 90, borderRadius: 7}}
+            source={{uri: imgUri}}
+            resizeMode="cover"
+          />
+          <View
+            style={{
+              flexDirection: 'column',
+              gap: 7,
+              width: 180,
+              maxWidth: 400,
+              padding: 5,
+            }}>
+            <View>
+              <Text numberOfLines={2} style={{fontWeight: '800', fontSize: 13}}>
+                Tesla self-driving Robotaxi shown in UK ahead of 2027 launch
+              </Text>
+            </View>
+            <View style={{width: 40}}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  paddingVertical: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: THEME_COLOR,
+                  color: Half_WHITE,
+                }}>
+                News
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                <Fontisto name="history" color={THEME_COLOR} size={11} />
+                <Text style={{fontSize: 11}}>{new Date().toDateString()}</Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', gap: 14, alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Feather name="trash" size={14} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <AntDesign name="sharealt" size={14} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={{
+          flexDirection: 'column',
+          // backgroundColor: Half_WHITE,
+          gap: 15,
           paddingLeft: 10,
           paddingTop: 15,
         }}>

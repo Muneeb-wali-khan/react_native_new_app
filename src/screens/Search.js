@@ -18,8 +18,10 @@ import {
 } from '../strings/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import { useNavigation } from '@react-navigation/native';
 
 const Search = () => {
+  const navigation = useNavigation()
   const data = [
     {
       source: {
@@ -91,6 +93,10 @@ const Search = () => {
         'Today marks two years since Apple made its Emergency SOS via satellite feature available on all iPhone 14 models in the U.S. and Canada. Apple has since expanded its suite of satellite-based features… [+2873 chars]',
     },
   ];
+
+  const handlePress = item => {
+    navigation.navigate('NewsDetails', {item});
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
