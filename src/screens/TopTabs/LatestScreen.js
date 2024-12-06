@@ -125,7 +125,7 @@ const LatestScreen = () => {
       </View>
       {/* background cover banner */}
       <ImageBackground
-        imageStyle={{opacity: 0.8, backgroundColor: '#000'}}
+        imageStyle={{opacity: 0.6, backgroundColor: '#000'}}
         source={{uri: bgcover}}
         style={{width: '100%', height: 230}}>
         <View
