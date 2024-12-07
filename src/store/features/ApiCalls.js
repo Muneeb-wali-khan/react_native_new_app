@@ -1,23 +1,23 @@
 import {fetchBaseQuery, createApi} from '@reduxjs/toolkit/query/react';
-import {API_URL} from '../../strings/strings';
-import Config from 'react-native-config';
-const NEWS_API_KEY = Config.NEWS_API_KEY;
+const NEWS_API_KEY = 'dffd4da287e848f291ab1037683112c9'
+const API_URL = 'https://newsapi.org/v2/'
 
 const endpoints = {
   // All articles mentioning Apple from yesterday, sorted by popular publishers first
-  apple: `everything?q=apple&from=2024-11-06&to=2024-11-06&sortBy=popularity&apiKey=${NEWS_API_KEY}`,
+  // https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=
+  bussiness: `top-headlines?country=us&category=business&apiKey=${NEWS_API_KEY}`,
   tesla: `everything?q=tesla&from=2024-10-07&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`,
 };
 
 export const NewsAPI = createApi({
-  reducerPath: 'weatherApi',
+  reducerPath: 'newsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
   endpoints: builder => ({
-    getNewsApple: builder.query({
+    getNewsBussiness: builder.query({
       query: () => ({
-        url: endpoints.apple,
+        url: endpoints.bussiness,
         method: 'GET',
       }),
     }),
@@ -27,4 +27,4 @@ export const NewsAPI = createApi({
 
 
 
-export const {useGetNewsAppleQuery} = NewsAPI;
+export const {useGetNewsBussinessQuery} = NewsAPI;
