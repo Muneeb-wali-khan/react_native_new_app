@@ -20,6 +20,7 @@ import {
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {useNavigation} from '@react-navigation/native';
 import { useGetNewsBussinessQuery } from '../../store/features/ApiCalls';
+import Loader from '../../components/Loader';
 
 const LatestScreen = () => {
   const navigation = useNavigation();
@@ -111,6 +112,7 @@ const LatestScreen = () => {
     );
   };
 
+  if(isLoading) return <Loader/>
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {/* headline */}

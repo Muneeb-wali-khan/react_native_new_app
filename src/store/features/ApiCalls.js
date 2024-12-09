@@ -6,7 +6,8 @@ const endpoints = {
   // All articles mentioning Apple from yesterday, sorted by popular publishers first
   // https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=
   bussiness: `top-headlines?country=us&category=business&apiKey=${NEWS_API_KEY}`,
-  tesla: `everything?q=tesla&from=2024-10-07&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`,
+  tesla: `everything?q=tesla&from=2024-11-09&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`,
+  tech: `top-headlines?sources=techcrunch&apiKey=${NEWS_API_KEY}`,
 };
 
 export const NewsAPI = createApi({
@@ -21,10 +22,22 @@ export const NewsAPI = createApi({
         method: 'GET',
       }),
     }),
+    getNewsTesla: builder.query({
+      query: () => ({
+        url: endpoints.tesla,
+        method: 'GET',
+      }),
+    }),
+    getNewsTech: builder.query({
+      query: () => ({
+        url: endpoints.tech,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
 
 
 
-export const {useGetNewsBussinessQuery} = NewsAPI;
+export const {useGetNewsBussinessQuery, useGetNewsTeslaQuery,useGetNewsTechQuery} = NewsAPI;
